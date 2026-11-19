@@ -6,7 +6,8 @@
   --link: #203f69;
   --line: #d6d0bf;
   --portrait-background: #efeada;
-  --serif: "STIX Two Text", "Times New Roman", "Liberation Serif", Times, serif;
+  --serif: "Crimson Text", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --heading-serif: "Old Standard TT", Didot, "Bodoni 72", "Bodoni MT", "Times New Roman", serif;
 }
 
 * {
@@ -44,10 +45,11 @@ body {
 
 h1 {
   margin: 0 0 0.7rem;
+  font-family: var(--heading-serif);
   font-size: clamp(2.5rem, 6.5vw, 4.2rem);
   line-height: 1.05;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: -0.025em;
 }
 
 .position, .affiliation {
@@ -108,9 +110,10 @@ main section {
 h2 {
   margin: 0 0 0.4rem;
   color: var(--ink);
+  font-family: var(--heading-serif);
   font-size: 1.75rem;
   line-height: 1.25;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 section p {
@@ -144,8 +147,8 @@ section p {
 
 /* Two logos, two addresses, then the date. */
 .site-footer {
-  --university-logo-width: 11rem;
-  --school-logo-width: 3.5rem;
+  --university-logo-width: 13rem;
+  --school-logo-width: 4.5rem;
   display: grid;
   grid-template-columns: var(--university-logo-width) var(--school-logo-width)
                          repeat(2, minmax(0, 1fr));
@@ -153,13 +156,13 @@ section p {
     "university school  postal  visiting"
     "updated    updated updated updated";
   align-items: start;
-  gap: 1.25rem clamp(1.25rem, 3vw, 2.5rem);
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
+  gap: 1.5rem clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: 3rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.55;
 }
 
 /* Give the wide university mark more room while keeping both logos proportional. */
@@ -214,6 +217,7 @@ section p {
 
 @media (max-width: 28rem) {
   .site-footer {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
     grid-template-areas:
       "university school"
       "postal     postal"
