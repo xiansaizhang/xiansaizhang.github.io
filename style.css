@@ -145,13 +145,15 @@ section p {
 /* Two logos, two addresses, then the date. */
 .site-footer {
   --university-logo-width: 11rem;
-  --school-logo-width: 7rem;
+  --school-logo-width: 3.5rem;
   display: grid;
   grid-template-columns: var(--university-logo-width) var(--school-logo-width)
-                         repeat(2, minmax(0, 1fr)) auto;
-  grid-template-areas: "university school postal visiting updated";
+                         repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "university school  postal  visiting"
+    "updated    updated updated updated";
   align-items: start;
-  gap: 1rem;
+  gap: 1.25rem clamp(1.25rem, 3vw, 2.5rem);
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
@@ -191,6 +193,8 @@ section p {
 
 .last-updated {
   grid-area: updated;
+  justify-self: end;
+  text-align: right;
   margin: 0;
 }
 
@@ -204,6 +208,16 @@ section p {
     grid-template-areas:
       "university school"
       "postal     visiting"
+      "updated    updated";
+  }
+}
+
+@media (max-width: 28rem) {
+  .site-footer {
+    grid-template-areas:
+      "university school"
+      "postal     postal"
+      "visiting   visiting"
       "updated    updated";
   }
 }
