@@ -1,12 +1,12 @@
 /* Site colours and type */
 :root {
-  --ink: #202a31;
-  --muted: #4c5c62;
-  --accent: #235a62;
-  --line: #ced8d6;
-  --portrait-background: #edf1ee;
-  --serif: "PT Serif", Georgia, serif;
-  --sans: "Source Sans 3", Arial, sans-serif;
+  --paper: #fbf8eb;
+  --ink: #24211d;
+  --muted: #504b43;
+  --link: #203f69;
+  --line: #d6d0bf;
+  --portrait-background: #efeada;
+  --serif: "Baskervville", Baskerville, "Palatino Linotype", "Book Antiqua", Georgia, serif;
 }
 
 * {
@@ -17,7 +17,7 @@ body {
   max-width: 62rem;
   margin: 0 auto;
   padding: clamp(2rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem) 2rem;
-  background: #fff;
+  background: var(--paper);
   color: var(--ink);
   font: 1.25rem/1.6 var(--serif);
 }
@@ -47,12 +47,11 @@ h1 {
   font-size: clamp(2.5rem, 6.5vw, 4.2rem);
   line-height: 1.05;
   font-weight: 500;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 
 .position, .affiliation {
   margin: 0;
-  font-family: var(--sans);
   line-height: 1.5;
 }
 
@@ -66,11 +65,12 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem 1.4rem;
-  font: 1.125rem/1.5 var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.5;
 }
 
 a {
-  color: var(--accent);
+  color: var(--link);
   overflow-wrap: anywhere;
   text-underline-offset: 0.22em;
 }
@@ -88,7 +88,7 @@ a:hover, a:focus-visible {
   aspect-ratio: 1 / 1;
   background: var(--portrait-background);
   color: var(--muted);
-  font: 1rem var(--sans);
+  font-size: 1rem;
 }
 
 .portrait img {
@@ -107,7 +107,7 @@ main section {
 
 h2 {
   margin: 0 0 0.4rem;
-  color: var(--accent);
+  color: var(--ink);
   font-size: 1.75rem;
   line-height: 1.25;
   font-weight: 500;
@@ -144,9 +144,9 @@ section p {
 
 /* Two logos, two addresses, then the date. */
 .site-footer {
+  --logo-width: 9rem;
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.8fr)
-                         repeat(2, minmax(0, 1.5fr)) auto;
+  grid-template-columns: repeat(2, var(--logo-width)) repeat(2, minmax(0, 1fr)) auto;
   grid-template-areas: "university school postal visiting updated";
   align-items: start;
   gap: 1rem;
@@ -154,15 +154,17 @@ section p {
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font: 1rem/1.5 var(--sans);
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
+/* Match the PNG widths; the height follows each logo's original proportions. */
 .site-footer img {
+  display: block;
+  align-self: center;
   width: 100%;
-  max-width: 8rem;
-  height: 3.5rem;
-  object-fit: contain;
-  object-position: left top;
+  max-width: var(--logo-width);
+  height: auto;
 }
 
 .university-logo { grid-area: university; }
