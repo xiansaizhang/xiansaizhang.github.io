@@ -1,12 +1,13 @@
-# xxx
+## About me
 
-I'm a first-year PhD student in economics at [University name].
+I'm a first-year economics PhD student at [University].
+Before starting my PhD, I [studied or worked on …].
 
 ## Research interests
 
-I'm interested in [field or topic]. One question I'd like to explore is
-[write a question you find interesting].
+I'm interested in [field]. One question I'd like to explore is
+[question you find interesting].
 
 ## Contact
 
-Email: <your.name@example.edu>
+You can reach me at <your.name@university.edu>.
