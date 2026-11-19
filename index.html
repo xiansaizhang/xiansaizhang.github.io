@@ -3,19 +3,86 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name | Economics</title>
+  <title>[Your name] | Economics</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header class="profile">
+    <div class="identity">
+      <h1>[Your name]</h1>
+      <p class="position">PhD Student in Economics</p>
+      <p class="affiliation">[Your department]<br>
+        [Your school]<br>
+        [Your university]</p>
+    </div>
+
+    <!-- Upload cv.pdf beside this file. Replace the LinkedIn URL and email below. -->
+    <nav class="contact-links" aria-label="CV and contact">
+      <a href="cv.pdf">CV</a>
+      <a href="https://www.linkedin.com/in/YOUR-PROFILE/">LinkedIn</a>
+      <a href="mailto:you@example.edu">you@example.edu</a>
+    </nav>
+
+    <!-- Upload photo.jpg beside this file, or change the filename to match your image. -->
+    <div class="portrait">
+      <span aria-hidden="true">Your photo</span>
+      <img src="photo.jpg" alt="Portrait of [Your name]" width="320" height="320"
+           onerror="this.hidden = true">
+    </div>
+  </header>
+
   <main>
-    <h1>Your Name</h1>
-    <p>I'm a first-year PhD student in economics at [University].</p>
+    <section id="introduction">
+      <h2>About me</h2>
+      <p>I’m a first-year economics PhD student at [your university].
+        Before my PhD, I [briefly describe your background].</p>
+    </section>
 
-    <h2>Research interests</h2>
-    <p>I'm interested in [field] and would like to explore [question].</p>
+    <section id="research">
+      <h2>Research</h2>
+      <p>I’m interested in [field or topic]. One question I’d like to explore
+        is [your research question].</p>
+    </section>
 
-    <h2>Experience</h2>
-    <p>Before my PhD, I [briefly describe your experience].</p>
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <p>[Add a course you’ve helped teach or a subject you’d like to teach.]</p>
+    </section>
+
+    <section id="reference">
+      <h2>References</h2>
+      <div class="references">
+        <article class="referee">
+          <h3>[First referee’s name]</h3>
+          <p>[Position]</p>
+          <p>[School]</p>
+          <a href="mailto:referee1@example.edu">referee1@example.edu</a>
+        </article>
+        <article class="referee">
+          <h3>[Second referee’s name]</h3>
+          <p>[Position]</p>
+          <p>[School]</p>
+          <a href="mailto:referee2@example.edu">referee2@example.edu</a>
+        </article>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <!-- Upload these two PNG files beside index.html. -->
+    <img class="university-logo" src="uni.png" alt="University logo">
+    <img class="school-logo" src="school.png" alt="School logo">
+    <address class="postal-address">
+      <strong>Postal address</strong><br>
+      [Street address]<br>
+      [City], [Country] [Postcode]
+    </address>
+    <address class="visiting-address">
+      <strong>Visiting address</strong><br>
+      [Street address]<br>
+      [City], [Country] [Postcode]
+    </address>
+    <p class="last-updated">Last updated: <time datetime="2026-11">Nov 2026</time></p>
+  </footer>
 </body>
 </html>

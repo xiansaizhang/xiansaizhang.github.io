@@ -1,21 +1,213 @@
-body {
-  font-family: Georgia, serif;
-  color: #292929;
-  background-color: #ffffff;
-  line-height: 1.6;
+/* Site colours and type */
+:root {
+  --ink: #202a31;
+  --muted: #4c5c62;
+  --accent: #235a62;
+  --line: #ced8d6;
+  --portrait-background: #edf1ee;
+  --serif: "PT Serif", Georgia, serif;
+  --sans: "Source Sans 3", Arial, sans-serif;
 }
 
-main {
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 0 24px;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem) 2rem;
+  background: #fff;
+  color: var(--ink);
+  font: 1.25rem/1.6 var(--serif);
+}
+
+/* Profile details and links on the left, portrait on the right */
+.profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(6.5rem, 36vw, 20rem);
+  grid-template-areas:
+    "identity photo"
+    "links    photo";
+  align-content: center;
+  column-gap: clamp(1rem, 5vw, 3rem);
+  row-gap: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.identity {
+  grid-area: identity;
+  align-self: end;
+  overflow-wrap: anywhere;
 }
 
 h1 {
-  font-size: 2.5rem;
+  margin: 0 0 0.7rem;
+  font-size: clamp(2.5rem, 6.5vw, 4.2rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.position, .affiliation {
+  margin: 0;
+  font-family: var(--sans);
+  line-height: 1.5;
+}
+
+.affiliation {
+  color: var(--muted);
+}
+
+.contact-links {
+  grid-area: links;
+  align-self: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.4rem;
+  font: 1.125rem/1.5 var(--sans);
+}
+
+a {
+  color: var(--accent);
+  overflow-wrap: anywhere;
+  text-underline-offset: 0.22em;
+}
+
+a:hover, a:focus-visible {
+  color: var(--ink);
+}
+
+.portrait {
+  grid-area: photo;
+  align-self: center;
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  background: var(--portrait-background);
+  color: var(--muted);
+  font: 1rem var(--sans);
+}
+
+.portrait img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--portrait-background);
+  object-fit: contain;
+}
+
+/* Homepage sections, in the order they appear in index.html */
+main section {
+  margin: 2.15rem 0;
 }
 
 h2 {
-  color: #244a78;
-  margin-top: 2rem;
+  margin: 0 0 0.4rem;
+  color: var(--accent);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+section p {
+  margin: 0;
+}
+
+/* Shared rows line up the two names, positions, schools, and email addresses. */
+.references {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.15rem clamp(1rem, 4vw, 3rem);
+}
+
+.referee {
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  align-items: start;
+  overflow-wrap: anywhere;
+}
+
+.referee h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.referee a {
+  justify-self: start;
+}
+
+/* Two logos, two addresses, then the date. */
+.site-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.8fr)
+                         repeat(2, minmax(0, 1.5fr)) auto;
+  grid-template-areas: "university school postal visiting updated";
+  align-items: start;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font: 1rem/1.5 var(--sans);
+}
+
+.site-footer img {
+  width: 100%;
+  max-width: 8rem;
+  height: 3.5rem;
+  object-fit: contain;
+  object-position: left top;
+}
+
+.university-logo { grid-area: university; }
+.school-logo { grid-area: school; }
+.postal-address { grid-area: postal; }
+.visiting-address { grid-area: visiting; }
+
+.site-footer address {
+  font-style: normal;
+  overflow-wrap: anywhere;
+}
+
+.site-footer strong {
+  color: var(--ink);
+}
+
+.last-updated {
+  grid-area: updated;
+  margin: 0;
+}
+
+.last-updated time {
+  white-space: nowrap;
+}
+
+@media (max-width: 56rem) {
+  .site-footer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "university school"
+      "postal     visiting"
+      "updated    updated";
+  }
+}
+
+/* Give the links a full row on narrow screens. */
+@media (max-width: 42rem) {
+  .profile {
+    grid-template-areas:
+      "identity photo"
+      "links    links";
+    padding-bottom: 1.4rem;
+  }
+
+  .identity {
+    align-self: center;
+  }
 }
