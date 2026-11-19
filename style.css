@@ -1,12 +1,12 @@
 /* Site colours and type */
 :root {
   --paper: #fbf8eb;
-  --ink: #24211d;
-  --muted: #504b43;
+  --ink: #000000;
+  --muted: #171717;
   --link: #203f69;
   --line: #d6d0bf;
   --portrait-background: #efeada;
-  --serif: "Baskervville", Baskerville, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --serif: "STIX Two Text", "Times New Roman", "Liberation Serif", Times, serif;
 }
 
 * {
@@ -46,7 +46,7 @@ h1 {
   margin: 0 0 0.7rem;
   font-size: clamp(2.5rem, 6.5vw, 4.2rem);
   line-height: 1.05;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -110,7 +110,7 @@ h2 {
   color: var(--ink);
   font-size: 1.75rem;
   line-height: 1.25;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 section p {
@@ -144,9 +144,11 @@ section p {
 
 /* Two logos, two addresses, then the date. */
 .site-footer {
-  --logo-width: 9rem;
+  --university-logo-width: 11rem;
+  --school-logo-width: 7rem;
   display: grid;
-  grid-template-columns: repeat(2, var(--logo-width)) repeat(2, minmax(0, 1fr)) auto;
+  grid-template-columns: var(--university-logo-width) var(--school-logo-width)
+                         repeat(2, minmax(0, 1fr)) auto;
   grid-template-areas: "university school postal visiting updated";
   align-items: start;
   gap: 1rem;
@@ -158,17 +160,23 @@ section p {
   line-height: 1.5;
 }
 
-/* Match the PNG widths; the height follows each logo's original proportions. */
+/* Give the wide university mark more room while keeping both logos proportional. */
 .site-footer img {
   display: block;
   align-self: center;
-  width: 100%;
-  max-width: var(--logo-width);
+  max-width: 100%;
   height: auto;
 }
 
-.university-logo { grid-area: university; }
-.school-logo { grid-area: school; }
+.university-logo {
+  grid-area: university;
+  width: var(--university-logo-width);
+}
+
+.school-logo {
+  grid-area: school;
+  width: var(--school-logo-width);
+}
 .postal-address { grid-area: postal; }
 .visiting-address { grid-area: visiting; }
 
