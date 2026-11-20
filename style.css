@@ -7,6 +7,11 @@
   --line: #d6d0bf;
   --portrait-background: #efeada;
   --serif: "Latin Modern Roman", "Times New Roman", serif;
+  --line-gap: 0.25rem;
+  --paragraph-gap: 0.75rem;
+  --item-gap: 1.25rem;
+  --section-gap: clamp(1.5rem, 3vw, 2rem);
+  --column-gap: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 * {
@@ -16,7 +21,7 @@
 body {
   max-width: 62rem;
   margin: 0 auto;
-  padding: clamp(2rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem) 2rem;
+  padding: var(--section-gap) clamp(1.25rem, 5vw, 3rem);
   background: var(--paper);
   color: var(--ink);
   font: 1.25rem/1.6 var(--serif);
@@ -30,9 +35,8 @@ body {
     "identity photo"
     "links    photo";
   align-content: center;
-  column-gap: clamp(1rem, 5vw, 3rem);
-  row-gap: 1rem;
-  padding-bottom: 2rem;
+  gap: var(--item-gap) var(--column-gap);
+  padding-bottom: var(--section-gap);
   border-bottom: 1px solid var(--line);
 }
 
@@ -43,7 +47,7 @@ body {
 }
 
 h1 {
-  margin: 0 0 0.7rem;
+  margin: 0 0 var(--paragraph-gap);
   font-family: "Latin Modern Roman Display", var(--serif);
   font-size: clamp(2.5rem, 6.5vw, 4.2rem);
   line-height: 1.05;
@@ -64,7 +68,7 @@ h1 {
   align-self: start;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 1.4rem;
+  gap: var(--line-gap) var(--item-gap);
   font-size: 1.125rem;
   line-height: 1.5;
 }
@@ -101,8 +105,11 @@ a:hover, a:focus-visible {
 }
 
 /* Main text inherits the body size. All sections share these two heading sizes. */
-main section {
-  margin: 1.85rem 0;
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: var(--section-gap);
+  padding-block: var(--section-gap);
 }
 
 main h2,
@@ -111,12 +118,12 @@ main h3 {
 }
 
 main h2 {
-  margin: 0 0 0.5rem;
+  margin: 0 0 var(--paragraph-gap);
   font-size: 1.75rem;
 }
 
 main h3 {
-  margin: 0 0 0.25rem;
+  margin: 0 0 var(--line-gap);
   font-size: 1.375rem;
 }
 
@@ -124,25 +131,26 @@ main p {
   margin: 0;
 }
 
-#introduction p + p {
-  margin-top: 0.8rem;
+#introduction p + p,
+.paper-authors + p {
+  margin-top: var(--paragraph-gap);
 }
 
 #research article + article {
-  margin-top: 1.25rem;
+  margin-top: var(--item-gap);
 }
 
 .teaching-course {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
-  column-gap: 1rem;
+  column-gap: var(--column-gap);
 }
 
 .references {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.15rem clamp(1rem, 4vw, 3rem);
+  gap: var(--line-gap) var(--column-gap);
 }
 
 /* Align the two names, affiliations and email links even when a line wraps. */
@@ -158,6 +166,10 @@ main p {
   justify-self: start;
 }
 
+.referee h3 {
+  margin-bottom: 0;
+}
+
 /* Footer logos and addresses */
 .site-footer {
   --university-logo-width: 13rem;
@@ -167,9 +179,8 @@ main p {
                          repeat(2, minmax(0, 1fr));
   grid-template-areas: "university school postal visiting";
   align-items: start;
-  gap: 1.5rem clamp(1.25rem, 3vw, 2.5rem);
-  margin-top: 3rem;
-  padding-top: 2rem;
+  gap: var(--item-gap) var(--column-gap);
+  padding-top: var(--section-gap);
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 1rem;
@@ -202,6 +213,8 @@ main p {
 }
 
 .site-footer strong {
+  display: block;
+  margin-bottom: var(--line-gap);
   color: var(--ink);
 }
 
@@ -230,7 +243,6 @@ main p {
     grid-template-areas:
       "identity photo"
       "links    links";
-    padding-bottom: 1.4rem;
   }
 
   .identity {
