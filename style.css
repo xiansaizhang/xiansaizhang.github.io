@@ -103,7 +103,12 @@ a:hover, a:focus-visible {
   background: var(--portrait-background);
   object-fit: contain;
 }
-
+.research-plot {
+  display: block;
+  max-width: min(100%, 640px);
+  height: auto;
+  margin-top: 1rem;
+}
 /* Main text inherits the body size. All sections share these two heading sizes. */
 main {
   display: grid;
