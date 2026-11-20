@@ -1,4 +1,16 @@
 /* Site colours and type */
+#teaching h3 {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.25rem;
+}
+
+.teaching-course {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1rem;
+  align-items: baseline;
+}
+
 :root {
   --paper: #fbf8eb;
   --ink: #000000;
