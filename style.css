@@ -170,7 +170,7 @@ main p {
   margin-bottom: 0;
 }
 
-/* The logos share the left side; the addresses form a compact group on the right. */
+/* Give each address half of the space beside the logos. */
 .site-footer {
   display: flex;
   flex-wrap: wrap;
@@ -205,16 +205,14 @@ main p {
 }
 
 .footer-addresses {
-  display: flex;
-  flex-wrap: wrap;
+  flex: 1 1 25rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--item-gap) 1rem;
-  max-width: 100%;
-  margin-inline-start: auto;
+  min-width: 0;
 }
 
 .footer-addresses address {
-  flex: none;
-  max-width: 100%;
   font-style: normal;
   overflow-wrap: anywhere;
 }
@@ -223,9 +221,9 @@ main p {
   color: var(--ink);
 }
 
-@media (max-width: 24rem) {
+@media (max-width: 28rem) {
   .footer-addresses {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
 
