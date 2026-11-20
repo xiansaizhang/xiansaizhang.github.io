@@ -170,15 +170,11 @@ main p {
   margin-bottom: 0;
 }
 
-/* Footer logos and addresses */
+/* The logos share the left side; the addresses form a compact group on the right. */
 .site-footer {
-  --university-logo-width: 13rem;
-  --school-logo-width: 4.5rem;
-  display: grid;
-  grid-template-columns: var(--university-logo-width) var(--school-logo-width)
-                         repeat(2, minmax(0, 1fr));
-  grid-template-areas: "university school postal visiting";
-  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: var(--item-gap) var(--column-gap);
   padding-top: var(--section-gap);
   border-top: 1px solid var(--line);
@@ -187,53 +183,49 @@ main p {
   line-height: 1.55;
 }
 
-/* Give the wide university mark more room while keeping both logos proportional. */
-.site-footer img {
-  display: block;
-  align-self: center;
+.footer-logos {
+  display: flex;
+  align-items: center;
+  gap: var(--item-gap);
   max-width: 100%;
+}
+
+.footer-logos img {
+  display: block;
+  min-width: 0;
   height: auto;
 }
 
 .university-logo {
-  grid-area: university;
-  width: var(--university-logo-width);
+  width: 15.5rem;
 }
 
 .school-logo {
-  grid-area: school;
-  width: var(--school-logo-width);
+  width: 5.25rem;
 }
-.postal-address { grid-area: postal; }
-.visiting-address { grid-area: visiting; }
 
-.site-footer address {
+.footer-addresses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--item-gap) 1rem;
+  max-width: 100%;
+  margin-inline-start: auto;
+}
+
+.footer-addresses address {
+  flex: none;
+  max-width: 100%;
   font-style: normal;
   overflow-wrap: anywhere;
 }
 
-.site-footer strong {
-  display: block;
-  margin-bottom: var(--line-gap);
+.footer-addresses strong {
   color: var(--ink);
 }
 
-@media (max-width: 56rem) {
-  .site-footer {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-      "university school"
-      "postal     visiting";
-  }
-}
-
-@media (max-width: 28rem) {
-  .site-footer {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-    grid-template-areas:
-      "university school"
-      "postal     postal"
-      "visiting   visiting";
+@media (max-width: 24rem) {
+  .footer-addresses {
+    flex-direction: column;
   }
 }
 
